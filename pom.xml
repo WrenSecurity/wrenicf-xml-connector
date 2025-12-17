@@ -21,101 +21,138 @@
  with the fields enclosed by brackets [] replaced by
  your own identifying information:
  "Portions Copyrighted [year] [name of copyright owner]"
+
+ Portions Copyright 2025 Wren Security.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <groupId>org.forgerock.openicf.connectors</groupId>
-        <artifactId>connectors-parent</artifactId>
-        <version>1.5.0.0</version>
+        <groupId>org.wrensecurity.wrenicf.connector</groupId>
+        <artifactId>connector-bundle-parent</artifactId>
+        <version>1.5.3.2</version>
     </parent>
-    <groupId>org.forgerock.openicf.connectors</groupId>
+
+    <groupId>org.wrensecurity.wrenicf.connector</groupId>
     <artifactId>xml-connector</artifactId>
-    <version>1.1.0.3</version>
+    <version>1.5.3.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
-    <name>Simulated XML Connector</name>
-    <description>Connector can simulate almost any kind of resource.</description>
-    <url>http://openicf.forgerock.org/connectors/xml-connector</url>
-    <issueManagement>
-        <system>jira</system>
-        <url>https://bugster.forgerock.org/jira/browse/OPENICF/component/10181</url>
-    </issueManagement>
-    <ciManagement>
-        <system>jenkins</system>
-        <url>https://ci.forgerock.org/view/OpenICF/job/OpenICF - xml-connector - postcommit/</url>
-    </ciManagement>
+
+    <name>XML File Connector</name>
+    <description>Connector for XML File.</description>
+
+    <url>https://github.com/WrenSecurity/wrenicf-xml-connector</url>
+
     <scm>
-        <connection>scm:git:ssh://git@stash.forgerock.org:7999/openicf/xml-connector.git</connection>
-        <developerConnection>scm:git:ssh://git@stash.forgerock.org:7999/openicf/xml-connector.git</developerConnection>
-        <url>http://stash.forgerock.org/projects/OPENICF/repos/xml-connector/browse/</url>
-      <tag>1.1.0.3</tag>
-  </scm>
-    <properties>
-        <openicf.osgi.embed>jaxen,saxon9he,xsom,relaxngDatatype,xml-apis,xercesImpl,stax-api</openicf.osgi.embed>
-        <openicf.osgi.import.before.defaults>!javax.swing*,</openicf.osgi.import.before.defaults>
-        <openicf.osgi.failok>true</openicf.osgi.failok>
-        <connectorPackage>org.forgerock.openicf.connectors.xml</connectorPackage>
-        <connectorClass>XMLConnector</connectorClass>
-        <framework.compatibilityVersion>1.1</framework.compatibilityVersion>
-        <framework.releaseVersion>2.0</framework.releaseVersion>
-    </properties>
+        <url>https://github.com/WrenSecurity/wrenicf-xml-connector</url>
+        <connection>scm:git:git://github.com/WrenSecurity/wrenicf-xml-connector.git</connection>
+        <developerConnection>scm:git:git@github.com:WrenSecurity/wrenicf-xml-connector.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>wrensecurity-snapshots</id>
+            <name>Wren Security Snapshot Repository</name>
+            <url>https://wrensecurity.jfrog.io/wrensecurity/snapshots</url>
+        </snapshotRepository>
+
+        <repository>
+            <id>wrensecurity-releases</id>
+            <name>Wren Security Release Repository</name>
+            <url>https://wrensecurity.jfrog.io/wrensecurity/releases</url>
+        </repository>
+    </distributionManagement>
+
     <repositories>
         <repository>
-            <id>forgerock-staging-repository</id>
-            <name>ForgeRock Release Repository</name>
-            <url>http://maven.forgerock.org/repo/releases</url>
+            <id>wrensecurity-releases</id>
+            <name>Wren Security Release Repository</name>
+            <url>https://wrensecurity.jfrog.io/wrensecurity/releases</url>
+
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+
+            <releases>
+                <enabled>true</enabled>
+            </releases>
         </repository>
+
         <repository>
-            <id>forgerock-snapshots-repository</id>
-            <name>ForgeRock Snapshot Repository</name>
-            <url>http://maven.forgerock.org/repo/snapshots</url>
+            <id>wrensecurity-snapshots</id>
+            <name>Wren Security Snapshot Repository</name>
+            <url>https://wrensecurity.jfrog.io/wrensecurity/snapshots</url>
+
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+
             <releases>
                 <enabled>false</enabled>
             </releases>
         </repository>
-        <repository>
-            <id>JavaNet</id>
-            <name>JavaNet Repository</name>
-            <url>http://download.java.net/maven/2</url>
-        </repository>
-        <repository>
-            <!-- required for saxon-9.0 -->
-            <id>servicemix-m2-repo</id>
-            <name>Servicemix Maven2 Repository</name>
-            <url>http://svn.apache.org/repos/asf/servicemix/m2-repo/</url>
-        </repository>
+
     </repositories>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/WrenSecurity/wrenicf-xml-connector/issues</url>
+    </issueManagement>
+
+    <mailingLists>
+        <mailingList>
+            <name>Wren Security Mailing List</name>
+            <archive>https://groups.google.com/forum/#!forum/wren-security</archive>
+            <subscribe>https://groups.google.com/forum/#!forum/wren-security</subscribe>
+            <unsubscribe>https://groups.google.com/forum/#!forum/wren-security</unsubscribe>
+            <post>wren-security@googlegroups.com</post>
+        </mailingList>
+    </mailingLists>
+
+    <properties>
+        <pgpVerifyKeysVersion>1.9.6</pgpVerifyKeysVersion>
+        <maven.compiler.release>17</maven.compiler.release>
+
+        <connectorPackage>org.forgerock.openicf.connectors.xml</connectorPackage>
+        <connectorClass>XMLConnector</connectorClass>
+        <framework.compatibilityVersion>1.5</framework.compatibilityVersion>
+        <framework.releaseVersion>3.2</framework.releaseVersion>
+
+        <openicf.maven.plugin.version>1.5.0</openicf.maven.plugin.version>
+
+        <openicf.osgi.embed>jaxen,Saxon-HE,xsom,relaxngDatatype</openicf.osgi.embed>
+        <openicf.osgi.import.before.defaults>!javax.swing*,</openicf.osgi.import.before.defaults>
+        <openicf.osgi.failok>true</openicf.osgi.failok>
+    </properties>
+
     <dependencies>
         <dependency>
-            <groupId>org.forgerock.openicf.framework</groupId>
-            <artifactId>connector-framework</artifactId>
+            <groupId>org.wrensecurity.wrenicf.framework</groupId>
+            <artifactId>connector-framework-core</artifactId>
         </dependency>
+
         <dependency>
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
-            <version>1.1.1</version>
+            <version>2.0.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>xml-apis</groupId>
-            <artifactId>xml-apis</artifactId>
-            <version>1.3.04</version>
-        </dependency>
+
         <dependency>
             <groupId>net.sf.saxon</groupId>
-            <artifactId>saxon9he</artifactId>
-            <version>9.4.0.1</version>
+            <artifactId>Saxon-HE</artifactId>
+            <version>9.4.0-9</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>com.sun.xsom</groupId>
             <artifactId>xsom</artifactId>
             <version>20070407</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <artifactId>relaxngDatatype</artifactId>
             <groupId>relaxngDatatype</groupId>
@@ -123,55 +160,64 @@
             <version>20020414</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>javax.xml.stream</groupId>
-            <artifactId>stax-api</artifactId>
-            <version>1.0-2</version>
-            <scope>provided</scope>
-        </dependency>
-
 
         <!-- Test Dependencies -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
+            <version>7.8.0</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>org.forgerock.openicf.framework</groupId>
+            <groupId>org.wrensecurity.wrenicf.framework</groupId>
             <artifactId>connector-framework-internal</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>org.forgerock.openicf.framework</groupId>
-            <artifactId>connector-test-common</artifactId>
+            <groupId>org.wrensecurity.wrenicf.framework</groupId>
+            <artifactId>connector-framework-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
+            <groupId>org.apache.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <scope>test</scope>
+            <version>5.0.3</version>
+            <type>pom</type>
+            <scope>provided</scope>
+
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.groovy</groupId>
+                    <artifactId>groovy-test</artifactId>
+                </exclusion>
+
+                <exclusion>
+                    <groupId>org.apache.groovy</groupId>
+                    <artifactId>groovy-test-junit5</artifactId>
+                </exclusion>
+
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <!-- TODO Fix the parallel tests -->
-                    <parallel>false</parallel>
-                    <threadCount>10</threadCount>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
                 <extensions>true</extensions>
             </plugin>
+
             <plugin>
                 <groupId>org.forgerock.maven.plugins</groupId>
                 <artifactId>openicf-maven-plugin</artifactId>
+
                 <executions>
                     <execution>
                         <goals>
